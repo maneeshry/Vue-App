@@ -1,6 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <LoginForm msg="Hello Vue.js App"/>
   <router-view />
 </template>
 

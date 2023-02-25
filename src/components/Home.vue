@@ -67,4 +67,18 @@ export default {
   color: #FFFFFF;
 }
 
+.logout-button {
+        background-color: #ea1538;
+        border-radius: 10px;
+        padding: 10px 40px;
+        color: #FFFFFF;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+
+.logout-button:hover {
+        background-color: green;
+        color: #fff;
+    }
+
 </style>

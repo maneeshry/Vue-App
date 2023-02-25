@@ -1,15 +1,16 @@
 <template>
-  <div class="login">
-    <h1>Hello Friend</h1>
-    <form>
-      <label>Username:</label>
-      <input type="email" v-model="email" :class="{ 'error': emailError}"><br>
-      <label>Password:</label>
-      <input type="password" v-model="password" :class="{ 'error': passwordError}"><br>
-      <button type="button" @click="login">Login</button> 
-      
+  <!-- added image in body tag observe in css i notified in styles changed some divs -->
+<body>
+    <form class="form" action="" method="">
+        <div class="login-container">
+            <h1 class="login-header">Welcome</h1>
+            <input class="input-box" type="email" name="Umail" placeholder="Email" v-model="email" :class="{ 'error': emailError}" required>
+            <input class="input-box" type="password" name="Upassword" placeholder="Password" v-model="password" :class="{ 'error': passwordError}" required>
+            <span class="login-forget">Forget Password?</span>
+            <button type="submit" @click="login">Log in</button>
+        </div>
     </form>
-    </div>
+</body>
 </template>
 
 
@@ -64,23 +65,75 @@ export default {
 </script>
 
 <style>
-.login {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  background-color: aquamarine;
-}
-form {
-	background-color: #FFFFFF;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+    }
+/* observe this body css */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-image: url(/src/assets/pxfuel.jpg);
+        cursor: pointer;
+    }
+
+    .login-container {
+        background-color: #0708478e;
+        border-radius: 15px;
+        height: 30rem;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 20%;
+        right: 30%;
+        flex-direction: column;
+        align-items: center;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .login-header {
+        margin-bottom: 35px;
+        color: #fff;
+    }
+
+    .input-box {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid black;
+    }
+
+    .login-forget {
+        margin: 2px 0 25px 0;
+        font-size: 10px;
+        width: 50%;
+        color: blue;
+        display: flex;
+        justify-content: end;
+        
+    }
+
+    .login-forget:hover {
+        color: steelblue;
+    }
+
+    button {
+        width: 50%;
+        margin: 10px 0;
+        padding: 12px 20px;
+        border-radius: 25px;
+        background-color: #3C79F5;
+        color: #fff;
+    }
+    
+    button:hover {
+        background-color: crimson;
+        color: white;
+    }
+
 </style>

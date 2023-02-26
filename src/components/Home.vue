@@ -1,13 +1,14 @@
  <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>Welcome: {{ username }}</p>
-    <p>Here is your home page</p>
+    <h1>Home</h1><br>
+    <p>Welcome: {{ $route.params.firstName }}</p>
+    <h5>Here is your home page</h5> <br>
     <button type="button" @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
+import { firstName } from '@/components/Login.vue';
 export default {
   name: 'HomePage',
   props: {
@@ -15,7 +16,7 @@ export default {
   },
   data() {
     return {
-      username: this.username
+      firstName: firstName
     };
   },
 methods: {
@@ -56,15 +57,22 @@ export default {
 
 <style>
 .home {
-  background-color: #138ab2;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-  color: #FFFFFF;
+    text-align: center;
+    color: #fff;
+    margin-top: 10%;
+    font-size: 1.5rem;
 }
+.logout-button {
+        background-color: #ea1538;
+        border-radius: 10px;
+        padding: 10px 40px;
+        color: #FFFFFF;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+.logout-button:hover {
+        background-color: green;
+        color: #fff;
+    }
 
 </style>

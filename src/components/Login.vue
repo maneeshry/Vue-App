@@ -1,25 +1,11 @@
-<!-- <template>
-  <div class="login">
-    <h1 style="color: aliceblue;">Hello Friend</h1>
-    <form class="form" action="" method="">
-        <div class="login-container">
-            <h1 class="login-header">Welcome</h1>
-            <input class="input-box" type="email" name="email" placeholder="Email" v-model="email" :class="{ 'error': emailError}" required>
-            <input class="input-box" type="password" name="password" placeholder="Password" v-model="password" :class="{ 'error': passwordError}" required>
-            <span class="login-forget">Forget Password?</span>
-            <button type="submit" @click="login">Log in</button>
-        </div>
-    </form>
-    </div>
-</template> -->
 <template>
   <div class="login">
     <h1 style="color: aliceblue;">Hello Friend</h1>
     <form class="form" action="" method="">
         <div class="login-container">
             <h1 class="login-header">Welcome</h1>
-            <input class="input-box" type="text" name="username" placeholder="Username" v-model="username" required>
-            <input class="input-box" type="password" name="password" placeholder="Password" v-model="password" required>
+            <input class="input-box" type="text" name="username" placeholder="Username" v-model="username" :class="{ 'error': emailError}" required>
+            <input class="input-box" type="password" name="password" placeholder="Password" v-model="password" :class="{ 'error': passwordError}" required>
             <span class="login-forget">Forget Password?</span>
             <button type="submit" @click="login">Log in</button>
         </div>
@@ -29,56 +15,31 @@
 
 
 <script>
-
-
-
 export default {
   name: 'LoginPage',
-  
-  props: {
-    msg: String
-  },
   data() {
     return {
       email: "",
-      username: "",
-      password: "",
+      username: "", //hbingley1
+      password: "", //CQutx25i8r
       firstName: "",
       loggedIn: false,
       emailError: false,
-      passwordError: false
+      passwordError: false,
+      errors: [],
     };
   },
-  /*
-  login() {
-    if (!this.email.includes("@")) { //checking email address
-        this.emailError = true;
-        alert("Invalid email address.");
-      } else {
-        this.emailError = false;
-      }
+  
+  methods: {     
+     login() {
+      
       // Validate password
       if (this.password.length < 8 ||  !/\d/.test(this.password)) { //checking password length and presence of a number
         alert("Invalid password.");
       } else {
         
         this.passwordError = false;
-      }
-  if (this.email === "1234@1234" && this.password === "12345678") {
-        var uname = this.email;
-        console.log("user: " + uname);
-        this.loggedIn = true;
-        this.$router.push("/home");
-        return uname;
-      } else {
-        alert("Invalid username or password.");
-      }
-    } */
-  methods: {
-    
-      
-    async login() {
-      
+        
       try{
         fetch('https://dummyjson.com/auth/login', {
           method: 'POST',
@@ -87,44 +48,20 @@ export default {
             
             username: this.username,
             password: this.password
-            // expiresInMins: 60, // optional
           })
         })
         .then(res => res.json())
-        // .then(console.log)
         const data = res => res.json()
-        var firstname = data.firstName;
-        console.log("first name: " + firstname);
         this.$router.push("/home");
         this.$router.push({ name: 'Home', params: { firstName: data.firstName } });
       } catch(err) {
         console.error(err)
-      }/*
-      fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    
-    username: this.username,
-    password: this.password
-    // expiresInMins: 60, // optional
-  })
-})
-.then(res => res.json())
-.then(console.log)
-this.loggedIn = true;
-const data = res => res.json()
-console.log("first name: " + data.firstName);
-this.$router.push("/home");
-this.$router.push({ name: 'Home', params: { firstName: data.firstName } });
-    
-    
-    }*/
+      }
+    }
+
   },
 }
-  
-};
-          
+};          
 </script>
 
 <style>
@@ -133,7 +70,6 @@ this.$router.push({ name: 'Home', params: { firstName: data.firstName } });
         margin: 0;
         padding: 0;
     }
-/* observe this body css */
     body {
         font-family: 'Roboto', sans-serif;
         background-image: url(/src/assets/pxfuel.jpg);

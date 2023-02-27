@@ -3,8 +3,6 @@
 </template>
 
 <script>
-//import LoginForm from './components/Login.vue'
-//import HomePage from './components/Home.vue'
 export default {
   name: 'App',
  
